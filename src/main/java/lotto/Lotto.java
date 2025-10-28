@@ -16,5 +16,13 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    // 6개의 로또 번호가 담긴 불변 리스트
+    public List<Integer> getNumbers() {
+        //  일단은 numbers를 그대로 반환합니다.)
+
+        // 안전을 위해 불변 리스트로 반환
+        return java.util.Collections.unmodifiableList(numbers);
+
+        // TODO: 추가 기능 구현
+    }
 }
