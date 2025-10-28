@@ -25,4 +25,9 @@ public class PurchaseAmount {
         }
     }
 
+    // 구매 가능한 로또의 총 개수 반환 기능
+    public int calculateTicketCount() {
+        return amount / LOTTO_PRICE_UNIT;
+    }
+
 }
