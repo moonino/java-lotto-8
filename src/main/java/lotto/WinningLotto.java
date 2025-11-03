@@ -14,18 +14,16 @@ public class WinningLotto {
     private final Lotto mainLotto;     // 당첨 번호 6개
     private final int bonusNumber; // 보너스 번호 1개
 
-    /**
-     * 당첨 로또를 생성합니다.
-     */
+    //당첨 로또를 생성합니다.
+
     public WinningLotto(Lotto mainLotto, int bonusNumber) {
         validate(mainLotto, bonusNumber); // "함수 분리" 요구 사항
         this.mainLotto = mainLotto;
         this.bonusNumber = bonusNumber;
     }
 
-    /**
-     * 보너스 번호의 유효성을 검증합니다.
-     */
+    //보너스 번호의 유효성을 검증합니다.
+
     private void validate(Lotto mainLotto, int bonusNumber) {
 
         // 1. 보너스 번호 범위 검증
