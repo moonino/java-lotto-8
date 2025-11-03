@@ -38,4 +38,35 @@ public class WinningLotto {
         }
     }
 
+    // 사용자의 로또와 당첨 번호를 비교하여 당첨 등수(Rank)를 반환합니다.
+
+    public Rank match(Lotto userLotto) {
+
+        // 1. 6개 당첨 번호 중 몇 개나 일치하는지 계산
+        int matchCount = calculateMatchCount(userLotto);
+
+        // 2. 보너스 번호가 일치하는지 계산
+        boolean bonusMatch = checkBonusMatch(userLotto);
+
+        // 3. Rank Enum에게 최종 등수 판별을 위임
+        return Rank.find(matchCount, bonusMatch);
+    }
+
+    // 사용자의 로또가 6개의 당첨 번호와 몇 개 일치하는지 계산합니다.
+
+    private int calculateMatchCount(Lotto userLotto) {
+        List<Integer> userNumbers = userLotto.getNumbers();
+        List<Integer> mainNumbers = mainLotto.getNumbers();
+
+        // (indent 2)
+        return (int) userNumbers.stream()
+                .filter(mainNumbers::contains)
+                .count();
+    }
+
+    // 사용자의 로또가 보너스 번호를 포함하는지 확인합니다.
+    private boolean checkBonusMatch(Lotto userLotto) {
+        return userLotto.getNumbers().contains(this.bonusNumber);
+    }
 }
+

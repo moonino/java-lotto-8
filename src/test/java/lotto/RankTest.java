@@ -21,11 +21,9 @@ class RankTest {
             "0, false, MISS"    // 0개 일치 (꽝)
     })
     void findRankByMatchCountAndBonus(int matchCount, boolean bonusMatch, Rank expectedRank) {
-        // when
-        // (RED: Rank Enum도, find 메서드도 아직 없음)
+
         Rank result = Rank.find(matchCount, bonusMatch);
 
-        // then
         assertThat(result).isEqualTo(expectedRank);
     }
 }
