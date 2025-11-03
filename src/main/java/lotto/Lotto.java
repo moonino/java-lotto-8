@@ -15,6 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    // 로또 번호 목록의 유효성을 검사합니다.
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT ) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
@@ -34,11 +35,6 @@ public class Lotto {
 
     // 6개의 로또 번호가 담긴 불변 리스트
     public List<Integer> getNumbers() {
-        //  일단은 numbers를 그대로 반환합니다.)
-
-        // 안전을 위해 불변 리스트로 반환
         return java.util.Collections.unmodifiableList(numbers);
-
-        // TODO: 추가 기능 구현
     }
 }

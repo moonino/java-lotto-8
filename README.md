@@ -12,15 +12,15 @@
 
 ### 2. 당첨 번호 입력
 - [ ] 당첨 번호(6개)를 쉼표(,) 기준으로 입력받는다.
-- [ ] (예외) 당첨 번호가 6개가 아닌 경우 `IllegalArgumentException`을 발생시킨다.
-- [ ] (예외) 당첨 번호에 중복된 숫자가 있는 경우 `IllegalArgumentException`을 발생시킨다.
-- [ ] (예외) 당첨 번호가 1~45 범위를 벗어난 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] (예외) 당첨 번호가 6개가 아닌 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] (예외) 당첨 번호에 중복된 숫자가 있는 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] (예외) 당첨 번호가 1~45 범위를 벗어난 경우 `IllegalArgumentException`을 발생시킨다.
 - [ ] (예외) 당첨 번호가 숫자가 아닌 값을 포함한 경우 `IllegalArgumentException`을 발생시킨다.
 
 ### 3. 보너스 번호 입력
 - [ ] 보너스 번호(1개)를 입력받는다.
-- [ ] (예외) 보너스 번호가 1~45 범위를 벗어난 경우 `IllegalArgumentException`을 발생시킨다.
-- [ ] (예외) 보너스 번호가 당첨 번호와 중복되는 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] (예외) 보너스 번호가 1~45 범위를 벗어난 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] (예외) 보너스 번호가 당첨 번호와 중복되는 경우 `IllegalArgumentException`을 발생시킨다.
 - [ ] (예외) 보너스 번호가 숫자가 아닌 경우 `IllegalArgumentException`을 발생시킨다.
 
 ### 4. 당첨 통계 및 수익률 계산
