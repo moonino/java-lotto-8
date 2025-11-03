@@ -21,5 +21,25 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또 번호가 1~45 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void createLottoByInvalidRange() {
+
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 46); // 46이 범위 밖
+
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+
+    @DisplayName("로또 번호가 1~45 범위를 벗어나면 예외가 발생한다. (0의 경우)")
+    @Test
+    void createLottoByInvalidRangeZero() {
+
+        List<Integer> numbers = List.of(0, 1, 2, 3, 4, 5); // 0이 범위 밖
+
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
 }
