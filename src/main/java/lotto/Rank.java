@@ -3,27 +3,43 @@ package lotto; //
 
  //로또 당첨 등수를 나타내는 Enum.
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public enum Rank {
 
-    // Enum 상수 정의 (일치 개수, 당첨금)
-    FIRST(6, 2_000_000_000L),
-    SECOND(5, 30_000_000L), // 5개 + 보너스
-    THIRD(5, 1_500_000L),  // 5개 (보너스X)
-    FOURTH(4, 50_000L),
-    FIFTH(3, 5_000L),
-    MISS(0, 0L); // 꽝 (0, 1, 2개 일치)
+    FIRST(6, 2_000_000_000L, false),
+    SECOND(5, 30_000_000L, true),
+    THIRD(5, 1_500_000L, false),
+    FOURTH(4, 50_000L, false),
+    FIFTH(3, 5_000L, false),
+    MISS(0, 0L, false);
 
     private final int matchCount;
     private final long prizeMoney;
+    private final String message;
 
-    /**
-     * Rank Enum 생성자
-     * @param matchCount    해당 등수의 기준이 되는 일치 개수 (MISS는 0으로 통일)
-     * @param prizeMoney    해당 등수의 당첨금
-     */
-    Rank(int matchCount, long prizeMoney) {
+    // Rank Enum 생성자
+    Rank(int matchCount, long prizeMoney, boolean needsBonus) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
+        this.message = createMessage(matchCount, prizeMoney, needsBonus);
+    }
+
+    // 출력 메소드
+
+    private String createMessage(int count, long prize, boolean needsBonus) {
+        if (this == MISS) {
+            return "";
+        }
+
+        String prizeFormatted = NumberFormat.getInstance(Locale.KOREA).format(prize);
+
+        // --- (5) this == SECOND 대신 needsBonus로 비교! ---
+        if (needsBonus) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%s원)", count, prizeFormatted);
+        }
+        return String.format("%d개 일치 (%s원)", count, prizeFormatted);
     }
 
     /**
@@ -64,5 +80,8 @@ public enum Rank {
 
     public long getPrizeMoney() {
         return prizeMoney;
+    }
+    public String getMessage() {
+        return message;
     }
 }
