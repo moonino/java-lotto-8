@@ -30,4 +30,8 @@ public class PurchaseAmount {
         return amount / LOTTO_PRICE_UNIT;
     }
 
+    // 구매 금액(int)을 반환합니다.
+    public int getAmount() {
+        return amount;
+    }
 }
